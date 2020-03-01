@@ -1,6 +1,10 @@
 class User < ApplicationRecord
   # Direct associations
 
+  has_many   :comments,
+             :foreign_key => "author_id",
+             :dependent => :destroy
+
   has_many   :received_follow_requests,
              :class_name => "FollowRequest",
              :foreign_key => "recipient_id",
